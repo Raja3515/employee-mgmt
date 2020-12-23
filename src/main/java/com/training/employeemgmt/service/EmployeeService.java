@@ -7,5 +7,11 @@ import com.training.employeemgmt.entity.Employee;
 public interface EmployeeService {
 	
 	public List<Employee> getAllEmployees();
+	
+	public Employee getEmployeeDetails(Integer employeeId);
+	
+	public Employee saveEmployee(Employee employee);
+	
+	public Boolean deleteEmployee(Integer employeeId);
 
 }
