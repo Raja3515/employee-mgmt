@@ -22,7 +22,7 @@ import com.training.employeemgmt.entity.Employee;
 import com.training.employeemgmt.service.EmployeeService;
 
 @RestController
-//@RequestMapping("/emp-mgmt")
+@RequestMapping("/emp-mgmt")
 public class EmployeeController {
 
 	@Autowired

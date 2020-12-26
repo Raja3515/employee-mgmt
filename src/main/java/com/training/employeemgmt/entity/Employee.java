@@ -1,33 +1,47 @@
 package com.training.employeemgmt.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Table(name = "EMPLOYEE",schema = "dbo")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Table(name = "EMPLOYEE", schema = "dbo")
 @Entity
 public class Employee {
-	
+
 	@Column(name = "[EMPLOYEE_ID]")
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer employeeId;
-	
+
 	@Column(name = "[EMPLOYEE_NAME]")
 	private String employeeName;
-	
+
 	@Column(name = "[AGE]")
 	private Integer age;
-	
+
 	@Column(name = "[SALARY]")
 	private Float salary;
-	
-	@Column(name = "[ADDRESS]")
-	private String address;
 
+	@OneToOne
+	@JoinColumn(name = "[ADDRESS_ID]")
+	private Address address;
+	
+//	@JsonIgnore
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name="[DEPARTMENT_ID]")
+//	private Department department;
+	
 	public Integer getEmployeeId() {
 		return employeeId;
 	}
@@ -60,14 +74,20 @@ public class Employee {
 		this.salary = salary;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
-	
 
+//	public Department getDepartment() {
+//		return department;
+//	}
+//
+//	public void setDepartment(Department department) {
+//		this.department = department;
+//	}
+	
 }
