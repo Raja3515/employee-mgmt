@@ -13,5 +13,7 @@ public interface EmployeeService {
 	public Employee saveEmployee(Employee employee);
 	
 	public Boolean deleteEmployee(Integer employeeId);
+	
+	public Employee updateEmployee(Employee employee);
 
 }
