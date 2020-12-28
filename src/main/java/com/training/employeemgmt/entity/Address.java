@@ -36,6 +36,9 @@ public class Address {
 	
 	@Column(name = "[ZIP_CODE]")
 	private Integer zipCode;
+	
+//	@OneToOne(mappedBy = "address")
+//	private Employee employee;
 
 	public Integer getAddressId() {
 		return addressId;

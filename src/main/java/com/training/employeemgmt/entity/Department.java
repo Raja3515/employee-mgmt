@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Table(name = "Department")
 @Entity
 public class Department {
@@ -24,9 +26,10 @@ public class Department {
 	@Column(name = "[DEPARTMENT_NAME]")
 	private String departmentName;
 	
-//	@OneToMany(mappedBy = "department")
-	@OneToMany
-	@JoinColumn(name="[DEPARTMENT_ID]")
+	@JsonIgnore
+	@OneToMany(mappedBy = "department")
+//	@OneToMany
+//	@JoinColumn(name="[DEPARTMENT_ID]")
 	private List<Employee> employees;
 
 	public Integer getDepartmentId() {

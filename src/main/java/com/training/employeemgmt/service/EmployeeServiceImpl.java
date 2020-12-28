@@ -48,4 +48,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		Employee updatedEmployee = employeeRepository.save(employee);
 		return updatedEmployee;
 	}
+
+	@Override
+	public List<Employee> getEmployeesByAge(Integer age) {		
+		return employeeRepository.getEmployeesByAge(age);
+	}
 }

@@ -38,9 +38,9 @@ public class Employee {
 	
 //	@JsonIgnore
 //	@ManyToOne(fetch = FetchType.LAZY)
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name="[DEPARTMENT_ID]")
-//	private Department department;
+	@ManyToOne
+	@JoinColumn(name="[DEPARTMENT_ID]")
+	private Department department;
 	
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -82,12 +82,12 @@ public class Employee {
 		this.address = address;
 	}
 
-//	public Department getDepartment() {
-//		return department;
-//	}
-//
-//	public void setDepartment(Department department) {
-//		this.department = department;
-//	}
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 	
 }

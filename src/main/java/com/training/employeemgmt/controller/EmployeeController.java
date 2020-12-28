@@ -70,5 +70,10 @@ public class EmployeeController {
 	public Employee updateEmployee(@RequestBody Employee employee) {
 		return employeeService.updateEmployee(employee);
 	}
-
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/getEmployeesByAge")
+	public List<Employee> getEmployeesByAge(@RequestParam(value = "age") Integer age) {
+		List<Employee> employees = employeeService.getEmployeesByAge(age);
+		return employees;
+	}
 }
