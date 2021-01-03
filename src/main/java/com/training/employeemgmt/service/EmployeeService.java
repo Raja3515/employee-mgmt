@@ -2,6 +2,8 @@ package com.training.employeemgmt.service;
 
 import java.util.List;
 
+import com.training.employeemgmt.dto.EmployeeModel;
+import com.training.employeemgmt.dto.UpdateEmployeeModel;
 import com.training.employeemgmt.entity.Employee;
 
 public interface EmployeeService {
@@ -11,7 +13,7 @@ public interface EmployeeService {
 	 * 
 	 * @return returns all employees 
 	 */
-	public List<Employee> getAllEmployees();
+	public List<EmployeeModel> getAllEmployees();
 	
 	/**
 	 * This method returns all employees whose age greater than given age
@@ -26,6 +28,6 @@ public interface EmployeeService {
 
 	public Boolean deleteEmployee(Integer employeeId);
 
-	public Employee updateEmployee(Employee employee);
+	public Boolean updateEmployee(UpdateEmployeeModel updateEmployeeModel);
 
 }
