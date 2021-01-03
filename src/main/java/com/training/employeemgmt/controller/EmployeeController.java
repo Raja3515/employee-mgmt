@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.training.employeemgmt.dto.ApiResponse;
 import com.training.employeemgmt.dto.EmployeeModel;
 import com.training.employeemgmt.dto.UpdateEmployeeModel;
 import com.training.employeemgmt.entity.Employee;
 import com.training.employeemgmt.service.EmployeeService;
+import com.training.employeemgmt.utils.AppUtils;
 
 @RestController
 @RequestMapping("/emp-mgmt")
@@ -31,12 +34,13 @@ public class EmployeeController {
 //	@GetMapping("/employees")
 	@RequestMapping(method = RequestMethod.GET, value = "/employees")
 //	public List<Employee> getAllEmployees(@RequestHeader("User-Id") String userId) {
-	public List<EmployeeModel> getAllEmployees(HttpServletRequest httpServletRequest,
+	public ResponseEntity<ApiResponse> getAllEmployees(HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) {
 //		httpServletResponse.setHeader("test", "test Value");
 //		String header = httpServletRequest.getHeader("User-Id");
 		List<EmployeeModel> employeeModels = employeeService.getAllEmployees();
-		return employeeModels;
+		ApiResponse apiResponse = AppUtils.generateSuccessResponseObject(employeeModels);
+		return new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.OK);
 	}
 
 //	@RequestMapping(method = RequestMethod.GET, value = "/employee")

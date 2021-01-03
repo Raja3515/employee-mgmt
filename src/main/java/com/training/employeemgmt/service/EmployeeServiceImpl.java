@@ -14,6 +14,7 @@ import com.training.employeemgmt.dto.UpdateEmployeeModel;
 import com.training.employeemgmt.entity.Employee;
 import com.training.employeemgmt.exception.CustomException;
 import com.training.employeemgmt.repository.EmployeeRepository;
+import com.training.employeemgmt.utils.AppErrors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -42,7 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee getEmployeeDetails(Integer employeeId) {
 		if(employeeId==null || employeeId<=0) {
-			throw new CustomException("Invalid employee id");
+			throw new CustomException(AppErrors.INVALID_EMPLOYEE_DETAILS);
 		}
 		Optional<Employee> optional = employeeRepository.findById(employeeId);
 		if (optional.isPresent()) {
@@ -75,8 +76,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 			employee.setAge(updateEmployeeModel.getAge());
 			updatedEmployee = employeeRepository.save(employee);
 			return true;
+		}else {
+			throw new CustomException(AppErrors.INVALID_EMPLOYEE_DETAILS);
 		}
-		return false;
+//		return false;
 	}
 
 	@Override
