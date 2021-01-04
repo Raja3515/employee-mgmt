@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +23,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	Logger logger=LoggerFactory.getLogger(EmployeeServiceImpl.class);
 
 	@Override
 	public List<EmployeeModel> getAllEmployees() {
+//		logger.info("getAllEmployees() start");
 		List<EmployeeModel> employeeModels=new ArrayList<EmployeeModel>();
 		List<Employee> employeeEntities = employeeRepository.findAll();
 		//Entity to DTO conversion
@@ -36,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			employeeModels.add(employeeModel);
 		}
 		
-		
+//		logger.info("getAllEmployees() end");
 		return employeeModels;
 	}
 

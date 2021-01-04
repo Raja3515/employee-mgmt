@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -15,12 +17,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
 import com.training.employeemgmt.dto.ErrorModel;
+import com.training.employeemgmt.service.EmployeeServiceImpl;
 
 @ControllerAdvice
 public class EmployeeMgmtControllerAdvice {
-
+	
+	Logger logger=LoggerFactory.getLogger(EmployeeMgmtControllerAdvice.class);
+	
 	@ExceptionHandler({ RuntimeException.class })
 	public ResponseEntity<Object> handleException(RuntimeException runtimeException) {
+//		logger.error("runtime exception occured",runtimeException);
 		ErrorModel errorModel = new ErrorModel();
 		errorModel.setMessage(runtimeException.getMessage());
 		errorModel.setTimestamp(LocalDateTime.now());
@@ -30,6 +36,7 @@ public class EmployeeMgmtControllerAdvice {
 	
 	@ExceptionHandler({ CustomException.class })
 	public ResponseEntity<Object> handleCustomException(RuntimeException runtimeException) {
+//		logger.error("custom exception occured",runtimeException);
 		ErrorModel errorModel = new ErrorModel();
 		errorModel.setMessage(runtimeException.getMessage());
 		errorModel.setTimestamp(LocalDateTime.now());
