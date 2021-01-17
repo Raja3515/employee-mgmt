@@ -63,12 +63,17 @@ INSERT INTO [dbo].[EMPLOYEE]
            ,GETDATE())
 GO
 
---USER DETAILS table data
-INSERT INTO [dbo].[USER_DETAILS] ([USER_NAME],[PASSWORD])
-	VALUES ('user1@gmail.com','user1@123')
+-- ROLE table data
+INSERT INTO [dbo].[ROLE] ([ROLE_NAME]) VALUES ('USER')
+INSERT INTO [dbo].[ROLE] ([ROLE_NAME]) VALUES ('ADMIN')
 
-INSERT INTO [dbo].[USER_DETAILS] ([USER_NAME],[PASSWORD])
-	VALUES ('test@gmail.com','$2y$12$hti1dfKsMnblS7EsSRHjPe/4GXcqWnzqerLNrmmiR2utPu5Lwahia')
+
+--USER DETAILS table data
+INSERT INTO [dbo].[USER_DETAILS] ([USER_NAME],[PASSWORD],[ROLE_ID])
+	VALUES ('user1@gmail.com','user1@123',1)
+
+INSERT INTO [dbo].[USER_DETAILS] ([USER_NAME],[PASSWORD],[ROLE_ID])
+	VALUES ('admin@gmail.com','$2y$12$hti1dfKsMnblS7EsSRHjPe/4GXcqWnzqerLNrmmiR2utPu5Lwahia',2)
 
 --Role table data
 INSERT INTO [dbo].[ROLE] ([ROLE_NAME]) VALUES ('User')
